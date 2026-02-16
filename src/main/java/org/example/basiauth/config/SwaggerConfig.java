@@ -14,8 +14,7 @@ import org.springframework.context.annotation.Configuration;
 )
 @OpenAPIDefinition(
         info = @Info(
-                title = "basic auth training",
-                description = "training before NTO"
+                title = "training basic"
         )
 )
 public class SwaggerConfig {

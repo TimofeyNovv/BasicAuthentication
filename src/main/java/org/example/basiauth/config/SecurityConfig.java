@@ -17,22 +17,21 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req ->
-                        req.requestMatchers("/api/auth/**",
+                        req.requestMatchers("/docs",
+                                        "/api/auth/**",
                                         "/api/demo/ping",
                                         "/swagger-ui.html",
                                         "/swagger-ui/**",
                                         "/v3/api-docs/**",
-                                        "/swagger-resources/**",
-                                        "/docs")
+                                        "/swagger-resources/**"
+                                )
                                 .permitAll()
-                                .requestMatchers("/demo/adminping").hasAuthority("ADMIN")
                                 .anyRequest()
                                 .authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-
         return http.build();
     }
 }
