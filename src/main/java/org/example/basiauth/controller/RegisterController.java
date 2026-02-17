@@ -18,17 +18,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
-public class AuthController {
+public class RegisterController {
 
     private final AuthenticationService authenticationService;
 
-
     @Operation(
-            summary = "эндпоинт для регистрации пользователя",
+            summary = "эндпоинт для регистрации пользователей",
             responses = {
-                    @ApiResponse(responseCode = "204", description = "пользователь успешно зарегистрирован"),
+                    @ApiResponse(responseCode = "204", description = "пользователь успешно создан"),
                     @ApiResponse(responseCode = "409", description = "пользователь с таким email уже существует", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
-                    @ApiResponse(responseCode = "400", description = "невалидный json или некорректное заполнение полей json", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+                    @ApiResponse(responseCode = "400", description = "некорректный формат json, или некорректное заполнение полей json", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
             }
     )
     @PostMapping("/register")

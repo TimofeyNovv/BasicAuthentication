@@ -20,9 +20,10 @@ public class AuthenticationService {
 
     public void register(RegisterRequest request) {
 
-        if (userRepository.existsByEmail(request.getEmail())){
+        if (userRepository.existsByEmail(request.getEmail())) {
             throw new UserAlreadyExistsException("user with email - " + request.getEmail() + " already exists");
         }
+
         UserEntity userEntity = UserEntity.builder()
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))

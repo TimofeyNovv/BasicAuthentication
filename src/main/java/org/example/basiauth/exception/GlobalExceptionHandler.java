@@ -22,7 +22,6 @@ public class GlobalExceptionHandler {
                 .description(exception.getMessage())
                 .time(LocalDateTime.now())
                 .build();
-
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 
@@ -35,7 +34,6 @@ public class GlobalExceptionHandler {
                 .description(exception.getMessage())
                 .time(LocalDateTime.now())
                 .build();
-
         return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
     }
 
@@ -48,7 +46,6 @@ public class GlobalExceptionHandler {
                 .description(exception.getMessage())
                 .time(LocalDateTime.now())
                 .build();
-
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
@@ -58,10 +55,9 @@ public class GlobalExceptionHandler {
     ) {
         ErrorResponse errorResponse = ErrorResponse.builder()
                 .responseCode("JSON_FORMAT_ERROR")
-                .description("некорректный формат json, проверьте запятые или кавычки")
+                .description("некорректный формат json проверьте запятые или кавычки")
                 .time(LocalDateTime.now())
                 .build();
-
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 }
